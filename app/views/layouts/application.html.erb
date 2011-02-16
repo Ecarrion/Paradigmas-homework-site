@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html>
+  
 <head>
-  <title>Paradigmas</title>
-  <%= stylesheet_link_tag :all %>
+  <title><%= title %></title>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
+  <%= render 'layouts/css' %>
 </head>
+
+
 <body>
-
-<%= yield %>
-
+  <div class="container">
+    
+    <%= render 'layouts/header' %>
+    
+    <section class="round">
+      <%= yield %>
+    </section>
+    
+    <%= render 'layouts/footer' %>
+    <%= debug(params) if Rails.env.development? %>
+    
+  </div>
 </body>
+
 </html>
