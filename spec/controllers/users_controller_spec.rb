@@ -110,6 +110,16 @@ describe UsersController do
         response.should have_selector("div#error_explanation")        
       end
       
+      it 'should clear the password field' do
+        post :create, :user => @attr.merge(:password => "invalid")
+        assigns(:user).password.should be_blank
+      end
+      
+      it 'should clear the password_confirmation field' do
+        post :create, :user => @attr.merge(:password_confirmation => "invalid2")
+        assigns(:user).password_confirmation.should be_blank
+      end
+      
     end
     
     describe 'success' do

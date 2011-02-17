@@ -42,6 +42,12 @@ class User < ActiveRecord::Base
     return nil if auth_user.nil?
     return auth_user if auth_user.has_password?(submitted_pass)
   end
+  
+  def self.authenticate_with_salt(remembered_id, remembered_salt)
+    remembered_user = User.find_by_id(remembered_id)
+    return nil if remembered_user.nil?
+    return remembered_user if remembered_user.salt = remembered_salt
+  end
     
   def has_password?(submitted_pass)
     epassword == encrypt(submitted_pass)
