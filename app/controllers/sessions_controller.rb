@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     if user
       sign_in user
       flash[:success] = "Successfuly signed in."
-      redirect_to user
+      redirect_back_or user
     elsif
       flash.now[:error] = "Invalid Email/Password combination."
       @title = "Sign in"

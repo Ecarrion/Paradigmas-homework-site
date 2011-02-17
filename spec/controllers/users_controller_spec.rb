@@ -5,14 +5,44 @@ describe UsersController do
   render_views
 
   describe "GET 'index'" do
-    it "should be successful" do
-      get 'index'
+    
+    before(:each) do
+      @user = Factory(:user)
+    end
+    
+    it "should be successful if signed in" do
+      test_sign_in @user
+      get :index
       response.should be_success
     end
     
+    it "should not be successful if not signed in" do
+      get :index
+      response.should_not be_success
+    end
+    
     it 'should have the right title' do
+      test_sign_in @user
       get :index
       response.should have_selector("title", :content => "All users")
+    end
+    
+    it 'should dispay the users' do
+      second = Factory(:user, :email => "another@example.com")
+      third  = Factory(:user, :email => "another@example.net")
+
+      @users = [@user, second, third]
+      
+      30.times do
+        @users << Factory(:user, :email => Factory.next(:email))
+      end
+      
+      test_sign_in @user
+      get :index
+      @users[0..2].each do |user|
+        response.should have_selector("li", :content => user.name)
+      end
+      
     end    
   end
 

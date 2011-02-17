@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
+  
+  before_filter :authenticate, :only => [:index] 
+  
   def index
     @title = "All users"
+    @users = User.find(:all)
   end
 
   def show
@@ -39,5 +43,13 @@ class UsersController < ApplicationController
 
   def destroy
   end
+  
+  
+  
+  private
+  
+    def authenticate
+      deny_access unless signed_in?
+    end
 
 end
