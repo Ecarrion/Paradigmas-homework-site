@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
     
     if user
       sign_in user
+      flash[:success] = "Successfuly signed in."
       redirect_to user
     elsif
       flash.now[:error] = "Invalid Email/Password combination."
@@ -20,7 +21,7 @@ class SessionsController < ApplicationController
   
   def destroy
     sign_out
-    flash[:info] = "Successfuly signed out"
+    flash[:info] = "Successfuly signed out."
     redirect_to root_path
   end
 
