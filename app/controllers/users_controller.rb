@@ -17,7 +17,8 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     
     if @user.save
-      flash[:success] = "Welcome to the Paradigms Homeworks site. You could now start uploading your homeworks"
+      message = "Welcome to the Paradigms Homeworks site. You can start uploading your homeworks now!"
+      flash[:success] = message
       redirect_to @user
     else
       @title = "Sign up"

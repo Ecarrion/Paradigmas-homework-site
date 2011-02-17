@@ -132,7 +132,7 @@ describe UsersController do
       
       it 'should have a wellcome flash message' do
         post :create, :user => @attr
-        flash[:success].should =~ /Welcome to the Paradigms Homeworks site. You could now start uploading your homeworks/i
+        flash[:success].should =~ /Welcome to the Paradigms Homeworks site. You can start uploading your homeworks now!/i
       end
       
     end
