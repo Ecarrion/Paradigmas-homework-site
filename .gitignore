@@ -1,6 +1,7 @@
 .bundle
 db/*.sqlite3*
 log/*.log
+config/s3.yml
 *.log
 /tmp/
 doc/

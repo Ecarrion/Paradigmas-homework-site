@@ -194,3 +194,11 @@ ul.users {
   list-style: none;
 }
 
+/* Homeworks */
+td.homeworks {
+  width: 70%;
+  padding: 15px;
+}
+
+}
+

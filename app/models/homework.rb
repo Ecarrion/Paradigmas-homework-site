@@ -10,14 +10,26 @@
 #  updated_at :datetime
 #
 
+
+
 class Homework < ActiveRecord::Base
   
+  attr_accessible :name, :file
+  
   validates :name, :presence => true,
-                   :length => {:maximum => 200}
+                   :length => {:maximum => 60}
                    
-  validates :file, :presence => true,
-                   :length => {:maximum => 255}
+#  validates :file, :presence => true,
+#                   :length => {:maximum => 255}
   
   belongs_to :user
+  
+  default_scope :order => 'homeworks.created_at DESC'
+  
+  #paperclip
+  has_attached_file :file,
+      :storage => :s3,
+      :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
+      :path => ":attachment/:id/:style/:filename"
   
 end

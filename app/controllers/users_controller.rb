@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_id(params[:id])
+    @homework = Homework.new
     @homeworks = @user.homeworks
     @title = @user.name
   end

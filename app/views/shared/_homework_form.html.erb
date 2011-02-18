@@ -1,0 +1,19 @@
+<%= form_for @homework, :html => { :multipart => true } do |f| -%>
+  
+  <%= render "shared/errors", :object => f.object %>
+  
+  <div class="field">
+    <%= f.label :name %> <br />
+    <%= f.text_field :name %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :file,  "Select your file" %> <br />
+    <%= f.file_field :file %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit "Add" %>
+  </div>
+  
+<% end -%>

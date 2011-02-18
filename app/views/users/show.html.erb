@@ -10,13 +10,30 @@
     <td class="sidebar round">
       <strong> Name </strong> <%= @user.name %> <br/>
       <strong> URL </strong> <%= link_to user_path(@user), @user  %>
+    </td>    
+  </tr>
+  
+  
+  <tr>
+    <td class="round">
+      <center>
+        <strong> Add a homework </strong>
+      </center>
+      <%= render "shared/homework_form"%>
     </td>
-    
+  </tr>
+  
+  <tr>
+    <td>
+    </td>
+  </tr>
+   
+  <% unless @homeworks.empty? -%>
     <tr>
-      <td class="main round">
+      <td class="homeworks round">
         <%= render @homeworks %>
       </td>
     </tr>
-    
-  </tr>
+  <% end -%>
+  
 </table>

@@ -12,7 +12,7 @@ class HomeworksController < ApplicationController
     if @homework.save
       flash[:success] = "Homework succesfully uploaded"
       redirect_to current_user
-    elsif
+    else
       @title = "Add Homework"
       render :new
     end
