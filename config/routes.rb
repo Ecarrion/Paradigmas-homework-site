@@ -4,6 +4,7 @@ Paradigmas::Application.routes.draw do
   
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
+  resources :homeworks, :only => [:new, :create, :show, :destroy]
   
   match '/home', :to => "pages#home"
   match '/contact', :to => "pages#contact"
