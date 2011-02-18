@@ -14,23 +14,29 @@
   </tr>
   
   
-  <tr>
-    <td class="round">
-      <center>
-        <strong> Add a homework </strong>
-      </center>
-      <%= render "shared/homework_form"%>
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-    </td>
-  </tr>
+  <% if current_user == @user -%>
+    <tr>
+      <td class="round">
+        <center>
+          <strong> Add a homework </strong>
+        </center>
+        <%= render "shared/homework_form"%>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+      </td>
+    </tr>    
+  <% end -%>
+
    
   <% unless @homeworks.empty? -%>
     <tr>
       <td class="homeworks round">
+        <center>
+          <strong> Homeworks </strong>
+        </center>
         <%= render @homeworks %>
       </td>
     </tr>

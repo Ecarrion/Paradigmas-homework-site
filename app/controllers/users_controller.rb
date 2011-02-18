@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
   
-  before_filter :authenticate, :only => [:index] 
-  
   def index
     @title = "All users"
     @users = User.find(:all)

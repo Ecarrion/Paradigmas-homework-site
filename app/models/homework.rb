@@ -19,7 +19,7 @@ class Homework < ActiveRecord::Base
   validates :name, :presence => true,
                    :length => {:maximum => 60}
                    
-#  validates :file, :presence => true,
+#  validates :file, :presence => true
 #                   :length => {:maximum => 255}
   
   belongs_to :user
@@ -30,6 +30,6 @@ class Homework < ActiveRecord::Base
   has_attached_file :file,
       :storage => :s3,
       :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
-      :path => ":attachment/:id/:style/:filename"
+      :path => ":attachment/:#{:id}-:#{:filename}"
   
 end

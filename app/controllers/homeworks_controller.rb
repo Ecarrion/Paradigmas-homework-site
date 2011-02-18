@@ -1,6 +1,7 @@
 class HomeworksController < ApplicationController
   
-  before_filter :authenticate, :only => [:new, :create]
+  before_filter :authenticate, :only => [:new, :create, :destroy]
+  before_filter :correct_user, :only => [:destroy] 
   
   def new
     @title = "Add Homework"
@@ -19,14 +20,25 @@ class HomeworksController < ApplicationController
   end
 
   def show
-    @homework = Homework.find_by_id(params[:id])
+    @homework = Homework.find(params[:id])
     @title = @homework.name
+  end
+  
+  def destroy
+    Homework.find(params[:id]).destroy
+    flash[:success] = "Homework succesfully deleted."
+    redirect_to current_user
   end
   
   
   private
     def authenticate
         deny_access unless signed_in?
+    end
+    
+    def correct_user
+      @user = Homework.find(params[:id]).user
+      redirect_to(root_path) unless current_user?(@user)
     end
 
 end
