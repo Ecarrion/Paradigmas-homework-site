@@ -1,6 +1,6 @@
 <p>
     Name: <%= homework.name %> <br />
-    Uploaded at: <%= homework.created_at %> <br>
+    Uploaded at: <%= localtime(homework.created_at) %> <br>
     <%= link_to 'Download', homework.file.url %>
     <% if current_user.id == homework.user.id -%>
       | <%= link_to 'Delete', homework, :method => :delete, :confirm => "Are you sure?",

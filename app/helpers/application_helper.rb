@@ -14,4 +14,9 @@ module ApplicationHelper
    link_to l, path
   end
   
+  #Formats time to a more readable format (Eg. 10 Jan 5:45 PM)
+  def localtime(time)
+    time.getlocal.strftime('%d %b %I:%M %p')
+  end
+  
 end
